@@ -21,6 +21,7 @@ int main(int, char**)
 
     for (int i = 0; i < MAX_VAL; i++)
     {
+		// std::cout << "mirror[i]: " << mirror[i] << ", numbers[i]: " << numbers[i] << std::endl;
         if (mirror[i] != numbers[i])
         {
             std::cerr << "didn't save the same value!!" << std::endl;
@@ -47,7 +48,8 @@ int main(int, char**)
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
+		// std::cout << "numbers[i]: " << numbers[i] << std::endl;
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }

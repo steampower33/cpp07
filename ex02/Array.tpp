@@ -2,16 +2,20 @@
 #define ARRAY_TPP
 
 template <class T>
-Array<T>::Array() : _array(NULL), _len(0) {}
+Array<T>::Array() : _array(NULL), _len(0) {
+	std::cout << "Default Constructor Called" << std::endl;
+}
 
 template <class T>
 Array<T>::Array(unsigned int n) {
+	std::cout << "Arguments Constructor Called" << std::endl;
 	_array = new T[n];
 	_len = n;
 }
 
 template <class T>
 Array<T>& Array<T>::operator=(const Array& other) {
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		_len = other.getSize();
@@ -28,6 +32,7 @@ Array<T>& Array<T>::operator=(const Array& other) {
 
 template <class T>
 Array<T>::Array(const Array& other) {
+	std::cout << "Copy Constructor Called" << std::endl;
 	_array = NULL;
 	_len = 0;
 	*this = other;
@@ -35,6 +40,7 @@ Array<T>::Array(const Array& other) {
 
 template <class T>
 Array<T>::~Array() {
+	std::cout << "Destructor Called" << std::endl;
 	if (_array)
 		delete _array;
 }
