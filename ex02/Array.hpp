@@ -9,6 +9,7 @@ public:
 	Array(const Array& other);
 	Array& operator=(const Array& other);
 	~Array();
+	void DoDeepCopy(Array* me, const Array& other);
 	unsigned int getSize() const;
 	T& operator[](unsigned int idx);
 	const T& operator[](unsigned int idx) const;

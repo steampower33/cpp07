@@ -14,19 +14,24 @@ Array<T>::Array(unsigned int n) {
 }
 
 template <class T>
-Array<T>& Array<T>::operator=(const Array& other) {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &other)
+void Array<T>::DoDeepCopy(Array* me, const Array& other) {
+	if (me != &other)
 	{
-		_len = other.getSize();
-		if (_array)
-			delete _array;
-		_array = new T[_len];
-		for (unsigned int i = 0; i < _len; i++)
+		me->_len = other.getSize();
+		if (me->_array)
+			delete me->_array;
+		me->_array = new T[me->_len];
+		for (unsigned int i = 0; i < me->_len; i++)
 		{
-			_array[i] = other[i];
+			me->_array[i] = other[i];
 		}
 	}
+}
+
+template <class T>
+Array<T>& Array<T>::operator=(const Array& other) {
+	std::cout << "Copy assignment operator called" << std::endl;
+	DoDeepCopy(this, other);
 	return *this;
 }
 
@@ -35,7 +40,7 @@ Array<T>::Array(const Array& other) {
 	std::cout << "Copy Constructor Called" << std::endl;
 	_array = NULL;
 	_len = 0;
-	*this = other;
+	DoDeepCopy(this, other);
 }
 
 template <class T>
